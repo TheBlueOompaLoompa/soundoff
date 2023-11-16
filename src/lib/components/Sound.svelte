@@ -7,13 +7,18 @@
 
     let audioPlayer: HTMLAudioElement;
 
-    async function playSound() {
-        const { data, error } = await $supabase.storage.from('audio')
-            .createSignedUrl(`${$session?.user.id}/${sound.id}`, 60);
-        if(error) return;
+    $: if(sound) {
+        setInterval(() => {
+            $supabase.storage.from('audio')
+            .createSignedUrl(`${$session?.user.id}/${sound.id}`, 60*10)
+            .then(({ data, error }) => {
+                if(error) return;
+                audioPlayer.src = data?.signedUrl;
+            })
+        }, 1000 * 60 * 10);
+    }
 
-        audioPlayer.autoplay = true;
-        audioPlayer.src = data?.signedUrl;
+    async function playSound() {
         audioPlayer.play();
     }
 
