@@ -38,6 +38,8 @@
     let name = '';
 
     let showUploadModal = false;
+
+    $: if(showUploadModal) name = '';
 </script>
 
 {#if showUploadModal}
