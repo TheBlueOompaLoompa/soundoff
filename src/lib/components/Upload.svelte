@@ -78,7 +78,7 @@
 
     #upload {
         background-color: brown;
-        position: absolute;
+        position: fixed;
         left: 1rem;
         bottom: 1rem;
         width: 4rem;
