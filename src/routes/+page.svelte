@@ -9,19 +9,27 @@
     let { supabase, session } = data;
     $: ({ supabase, session } = data);
 
-    let magiced = false;
-
     let email = '';
+    let password = '';
 
-    function magic() {
-        supabase.auth.signInWithOtp({
+    function logIn() {
+        supabase.auth.signInWithPassword({
             email,
+            password
+        });
+    }
+
+    let emailed = false;
+
+    function signUp() {
+        supabase.auth.signUp({
+            email,
+            password,
             options: {
                 emailRedirectTo: window.location.host
             }
-        });
-
-        magiced = true;
+        })
+        emailed = true;
     }
 
     async function logout() {
@@ -46,11 +54,13 @@
 <main>
     <h1>Soundoff!</h1>
     {#if !session}
-        {#if !magiced}
+        {#if !emailed}
         <auth>
             <center>
                 <input type="email" placeholder="email" bind:value={email}>
-                <button on:click={magic}>magic</button>
+                <input type="password" placeholder="password" bind:value={password}>
+                <button on:click={logIn}>log in</button>
+                <button on:click={signUp}>sign up</button>
             </center>
         </auth>
         {:else}
