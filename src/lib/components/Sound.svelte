@@ -12,6 +12,7 @@
             .createSignedUrl(`${$session?.user.id}/${sound.id}`, 60);
         if(error) return;
 
+        audioPlayer.autoplay = true;
         audioPlayer.src = data?.signedUrl;
         audioPlayer.play();
     }
