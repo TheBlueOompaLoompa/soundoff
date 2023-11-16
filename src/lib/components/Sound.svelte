@@ -21,6 +21,7 @@
     }
 
     async function playSound() {
+        audioPlayer.currentTime = 0;
         audioPlayer.play();
     }
 
