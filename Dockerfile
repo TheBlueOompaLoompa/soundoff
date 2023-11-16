@@ -9,5 +9,4 @@ RUN bun install
 
 COPY . .
 
-EXPOSE 8000/tcp
 CMD [ "bun", "run", "dev" ]
