@@ -45,7 +45,7 @@
     <audio bind:this={audioPlayer}></audio>
     <button on:click={playSound}><PlayFill width={64} height={64}/></button>
     <!-- svelte-ignore a11y-invalid-attribute -->
-    <a href="#" on:click={deleteButton}><h4>{deleting ? `Delete ${sound.name}` : sound.name}</h4></a>
+    <a href="#" class="{deleting ? 'deleting' : ''}" on:click={deleteButton}><h4>{deleting ? `Delete ${sound.name}` : sound.name}</h4></a>
 </sound>
 {/if}
 
@@ -73,5 +73,9 @@
 
     h4 {
         text-align: center;
+    }
+
+    .deleting {
+        color: red;
     }
 </style>
