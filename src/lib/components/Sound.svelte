@@ -8,14 +8,16 @@
     let audioPlayer: HTMLAudioElement;
 
     $: if(sound) {
-        setInterval(() => {
+        const getSound = () => {
             $supabase.storage.from('audio')
             .createSignedUrl(`${$session?.user.id}/${sound.id}`, 60*10)
             .then(({ data, error }) => {
                 if(error) return;
                 audioPlayer.src = data?.signedUrl;
             })
-        }, 1000 * 60 * 10);
+        };
+        getSound();
+        setInterval(getSound, 1000 * 60 * 10);
     }
 
     async function playSound() {
