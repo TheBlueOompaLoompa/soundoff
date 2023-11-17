@@ -46,7 +46,7 @@
 <modal>
     {#if !loading}
         <button on:click={() => showUploadModal = false}>Back</button>
-        <input type="file" accept=".mp3, .ogg" on:change={fileAdded}>
+        <input type="file" accept=".mp3, .ogg, .wav" on:change={fileAdded}>
         <input type="text" placeholder="name" bind:value={name}>
         {#if files && name.length >= 3}
         <button on:click={upload}>Upload</button>
