@@ -72,7 +72,7 @@
             <Sound {sound}/>
         {/each}
         </sounds>
-        <button on:click={logout}>Logout</button>
+        <button on:click={logout} style="margin-bottom: 1rem;">Logout</button>
         <Upload/>
     {/if}
 </main>
@@ -93,6 +93,7 @@
         grid-template-columns: repeat( auto-fit, minmax(150px, 1fr) );
         grid-auto-flow: row;
         gap: 1rem;
+        margin-bottom: calc(5rem - 1rem);
     }
 
     auth {
