@@ -44,14 +44,22 @@
 
 {#if showUploadModal}
 <modal>
+    <box>
+        <h2 style="margin-bottom: 1rem;">Upload</h2>
     {#if !loading}
-        <button on:click={() => showUploadModal = false}>Back</button>
         <input type="file" accept=".mp3, .ogg, .wav" on:change={fileAdded}>
         <input type="text" placeholder="name" bind:value={name}>
-        {#if files && name.length >= 3}
-        <button on:click={upload}>Upload</button>
-        {/if}
+        
+        <buttonrow style="margin-top: 1rem;">
+            {#if files && name.length >= 3}
+            <button on:click={upload}>Upload</button>
+            {:else}
+            <button disabled on:click={upload}>Upload</button>
+            {/if}
+            <button on:click={() => showUploadModal = false}>Back</button>
+        </buttonrow>
     {/if}
+    </box>
 </modal>
 {/if}
 
@@ -69,11 +77,39 @@
         background-color: rgba(25, 36, 44, 0.4);
 
         display: flex;
-        flex-direction: column;
         justify-content: center;
         align-items: center;
 
         z-index: 99999;
+    }
+
+    box {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        width: 80%;
+
+        border: 2px solid gray;
+        border-radius: 1rem;
+
+        background-color: rgb(21, 21, 21);
+        padding: .25rem;
+    }
+
+    box * {
+        margin: .25rem;
+        max-width: 80%;
+    }
+
+    :disabled {
+        filter: brightness(.5);
+    }
+
+    buttonrow {
+        display: flex;
+        flex-direction: row;
     }
 
     #upload {
