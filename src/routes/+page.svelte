@@ -72,7 +72,7 @@
             <Sound {sound}/>
         {/each}
         </sounds>
-        <button on:click={logout} style="z-index: 1;">Logout</button>
+        <button on:click={logout} style="z-index: 1; margin: 0.8rem;">Logout</button>
         <Upload/>
     {/if}
 </main>
@@ -82,8 +82,8 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        min-height: 100vh;
         height: 100%;
-        margin-bottom: 1rem;
     }
 
     sounds {
