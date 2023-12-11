@@ -47,6 +47,10 @@
                 sounds = data;
             });
     }
+
+    function enterCheck(event: KeyboardEvent) {
+        if(event.key == 'Enter') logIn();
+    }
 </script>
 
 
@@ -57,8 +61,8 @@
         {#if !emailed}
         <auth>
             <center>
-                <input type="email" placeholder="email" bind:value={email}>
-                <input type="password" placeholder="password" bind:value={password}>
+                <input type="email" placeholder="email" bind:value={email} on:keypress={enterCheck}>
+                <input type="password" placeholder="password" bind:value={password} on:keypress={enterCheck}>
                 <button on:click={logIn}>log in</button>
                 <button on:click={signUp}>sign up</button>
             </center>
