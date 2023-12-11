@@ -72,7 +72,7 @@
             <Sound {sound}/>
         {/each}
         </sounds>
-        <button on:click={logout} style="margin-bottom: 1rem;">Logout</button>
+        <button on:click={logout} style="z-index: 1;">Logout</button>
         <Upload/>
     {/if}
 </main>
@@ -83,6 +83,7 @@
         flex-direction: column;
         align-items: center;
         height: 100%;
+        margin-bottom: 1rem;
     }
 
     sounds {
@@ -93,7 +94,6 @@
         grid-template-columns: repeat( auto-fit, minmax(150px, 1fr) );
         grid-auto-flow: row;
         gap: 1rem;
-        margin-bottom: calc(5rem - 1rem);
     }
 
     auth {
